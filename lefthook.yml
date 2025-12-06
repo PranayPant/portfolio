@@ -1,0 +1,19 @@
+# EXAMPLE USAGE:
+#
+#   Refer for explanation to following link:
+#   https://lefthook.dev/configuration/
+
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      root: .
+      glob: "*.{js,jsx,ts,tsx,json,md}"
+      run: pnpm prettier --write --no-error-on-unmatched-pattern --ignore-unknown {staged_files} && git add {staged_files}
+pre-push:
+  parallel: true
+  commands:
+    lint:
+      root: .
+      glob: "*.{js,jsx,ts,tsx}"
+      run: pnpm eslint {staged_files} --fix

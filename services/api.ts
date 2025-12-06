@@ -11,7 +11,8 @@ export const fetchTechArticles = async (): Promise<BlogPost[]> => {
     const data = await response.json();
     return data as BlogPost[];
   } catch (error) {
-    console.error("Failed to fetch articles:", error);
+    // eslint-disable-next-line no-console
+    console.error('Failed to fetch articles:', error);
     return [];
   }
 };

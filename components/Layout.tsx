@@ -30,25 +30,24 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
       {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
+      <nav
+        className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}
+      >
         <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
           <a href="#" className="text-xl font-bold text-slate-900 tracking-tight">
-            {PERSONAL_INFO.name.split(' ')[0]}<span className="text-accent">.dev</span>
+            {PERSONAL_INFO.name.split(' ')[0]}
+            <span className="text-accent">.dev</span>
           </a>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                className="text-sm font-medium text-slate-600 hover:text-accent transition-colors"
-              >
+            {navLinks.map(link => (
+              <a key={link.name} href={link.href} className="text-sm font-medium text-slate-600 hover:text-accent transition-colors">
                 {link.name}
               </a>
             ))}
-            <a 
-              href={`mailto:${PERSONAL_INFO.email}`} 
+            <a
+              href={`mailto:${PERSONAL_INFO.email}`}
               className="px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors"
             >
               Contact Me
@@ -56,10 +55,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-slate-700"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
+          <button className="md:hidden text-slate-700" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -67,13 +63,8 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         {/* Mobile Nav Dropdown */}
         {isMenuOpen && (
           <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-lg py-4 px-4 flex flex-col space-y-4">
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href}
-                className="text-slate-600 hover:text-accent font-medium py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
+            {navLinks.map(link => (
+              <a key={link.name} href={link.href} className="text-slate-600 hover:text-accent font-medium py-2" onClick={() => setIsMenuOpen(false)}>
                 {link.name}
               </a>
             ))}
@@ -81,9 +72,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         )}
       </nav>
 
-      <main className="flex-grow pt-20">
-        {children}
-      </main>
+      <main className="flex-grow pt-20">{children}</main>
 
       <footer className="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
         <div className="container mx-auto px-4 grid md:grid-cols-3 gap-8 mb-12">
@@ -91,9 +80,13 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <h3 className="text-xl font-bold text-white mb-4">{PERSONAL_INFO.name}</h3>
             <p className="text-slate-400 mb-6 max-w-xs">{PERSONAL_INFO.role}</p>
             <div className="flex space-x-4">
-               {/* Placeholders for social links as they weren't in resume */}
-              <a href="#" className="hover:text-white transition-colors"><Github size={20} /></a>
-              <a href="#" className="hover:text-white transition-colors"><Linkedin size={20} /></a>
+              {/* Placeholders for social links as they weren't in resume */}
+              <a href="#" className="hover:text-white transition-colors">
+                <Github size={20} />
+              </a>
+              <a href="#" className="hover:text-white transition-colors">
+                <Linkedin size={20} />
+              </a>
             </div>
           </div>
           <div>

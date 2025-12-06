@@ -18,23 +18,16 @@ vi.mock('../../constants', () => ({
       company: 'Tech Corp',
       role: 'Senior Frontend Engineer',
       period: '2022 - Present',
-      description: [
-        'Led development of React applications',
-        'Improved performance by 40%',
-        'Mentored junior developers'
-      ]
+      description: ['Led development of React applications', 'Improved performance by 40%', 'Mentored junior developers'],
     },
     {
       id: 'exp2',
       company: 'StartupXYZ',
       role: 'Frontend Developer',
       period: '2020 - 2022',
-      description: [
-        'Built responsive web applications',
-        'Implemented modern UI/UX designs'
-      ]
-    }
-  ]
+      description: ['Built responsive web applications', 'Implemented modern UI/UX designs'],
+    },
+  ],
 }));
 
 describe('ExperienceTimeline Component', () => {
@@ -79,21 +72,21 @@ describe('ExperienceTimeline Component', () => {
 
   it('has proper section id for navigation', () => {
     const { container } = render(<ExperienceTimeline />);
-    
+
     const section = container.querySelector('#experience');
     expect(section).toBeInTheDocument();
   });
 
   it('applies correct background styling', () => {
     const { container } = render(<ExperienceTimeline />);
-    
+
     const section = container.querySelector('#experience');
     expect(section).toHaveClass('py-24', 'bg-slate-50');
   });
 
   it('displays timeline structure correctly', () => {
     const { container } = render(<ExperienceTimeline />);
-    
+
     // Check for timeline dots (should have 2, one for each experience)
     const timelineDots = container.querySelectorAll('.rounded-full');
     expect(timelineDots.length).toBeGreaterThanOrEqual(2);

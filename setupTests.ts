@@ -10,14 +10,15 @@ class IntersectionObserverMock {
   readonly root: Element | null = null;
   readonly rootMargin: string = '';
   readonly thresholds: ReadonlyArray<number> = [];
-  
+
   disconnect() {}
   observe() {}
-  takeRecords() { return []; }
+  takeRecords() {
+    return [];
+  }
   unobserve() {}
 }
 
-// @ts-ignore - Mocking a browser API that might have slight type mismatches in different TS versions
 window.IntersectionObserver = IntersectionObserverMock;
 
 // Clean up DOM after each test

@@ -25,8 +25,8 @@ vi.mock('../constants', () => ({
     email: 'punch.up0079@gmail.com',
     phone: '+1-479-402-1614',
     github: 'https://github.com/pranaypant',
-    linkedin: 'https://linkedin.com/in/pranaypant'
-  }
+    linkedin: 'https://linkedin.com/in/pranaypant',
+  },
 }));
 
 describe('Layout Component', () => {
@@ -34,7 +34,7 @@ describe('Layout Component', () => {
     // Mock window.scrollY
     Object.defineProperty(window, 'scrollY', {
       value: 0,
-      writable: true
+      writable: true,
     });
   });
 

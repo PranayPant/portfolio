@@ -22,8 +22,8 @@ vi.mock('../../constants', () => ({
     { name: 'React', level: 95, category: 'Core' },
     { name: 'TypeScript', level: 90, category: 'Core' },
     { name: 'Node.js', level: 85, category: 'Core' },
-    { name: 'Jest', level: 80, category: 'Testing' }
-  ]
+    { name: 'Jest', level: 80, category: 'Testing' },
+  ],
 }));
 
 describe('SkillsChart Component', () => {
@@ -49,21 +49,21 @@ describe('SkillsChart Component', () => {
 
   it('has proper section id for navigation', () => {
     const { container } = render(<SkillsChart />);
-    
+
     const section = container.querySelector('#skills');
     expect(section).toBeInTheDocument();
   });
 
   it('applies correct styling classes', () => {
     const { container } = render(<SkillsChart />);
-    
+
     const section = container.querySelector('#skills');
     expect(section).toHaveClass('py-24', 'bg-white');
   });
 
   it('contains chart container with proper styling', () => {
     const { container } = render(<SkillsChart />);
-    
+
     const chartContainer = container.querySelector('.h-\\[400px\\]');
     expect(chartContainer).toBeInTheDocument();
     expect(chartContainer).toHaveClass('bg-slate-50', 'rounded-xl');

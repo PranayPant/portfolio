@@ -16,9 +16,8 @@ export const ExperienceTimeline: React.FC = () => {
             <div key={exp.id} className="relative pl-8 md:pl-0">
               {/* Timeline Line */}
               <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-200 -translate-x-1/2"></div>
-              
+
               <div className={`md:flex items-center justify-between mb-12 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} group`}>
-                
                 {/* Timeline Dot */}
                 <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-white border-4 border-accent rounded-full -translate-x-[5px] md:-translate-x-1/2 z-10 group-hover:scale-125 transition-transform duration-300"></div>
 

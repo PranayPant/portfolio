@@ -12,7 +12,7 @@ export const QualityIndicators: React.FC = () => {
             <p className="text-slate-400 text-xs">Automated CI/CD Pipeline Status</p>
           </div>
         </div>
-        
+
         <div className="flex flex-wrap gap-4 md:gap-8">
           <div className="flex items-center space-x-2">
             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
@@ -21,17 +21,23 @@ export const QualityIndicators: React.FC = () => {
 
           <div className="flex items-center space-x-2" title="Mocked Test Coverage">
             <Terminal size={14} className="text-accent" />
-            <span className="text-slate-300 text-sm">Unit Tests: <span className="text-white">98% Coverage</span></span>
+            <span className="text-slate-300 text-sm">
+              Unit Tests: <span className="text-white">98% Coverage</span>
+            </span>
           </div>
 
           <div className="flex items-center space-x-2" title="E2E Testing via Playwright">
             <Activity size={14} className="text-purple-400" />
-            <span className="text-slate-300 text-sm">E2E: <span className="text-white">Playwright Verified</span></span>
+            <span className="text-slate-300 text-sm">
+              E2E: <span className="text-white">Playwright Verified</span>
+            </span>
           </div>
 
           <div className="flex items-center space-x-2">
             <CheckCircle2 size={14} className="text-amber-400" />
-            <span className="text-slate-300 text-sm">Lighthouse: <span className="text-white">100/100</span></span>
+            <span className="text-slate-300 text-sm">
+              Lighthouse: <span className="text-white">100/100</span>
+            </span>
           </div>
         </div>
       </div>

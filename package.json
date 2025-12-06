@@ -12,7 +12,11 @@
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:coverage-ui": "vitest --ui --coverage",
-    "deploy": "pnpm build && gh-pages -d dist"
+    "deploy": "pnpm build && gh-pages -d dist",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@jest/globals": "^30.2.0",
@@ -25,11 +29,21 @@
     "whatwg-fetch": "^3.6.20"
   },
   "devDependencies": {
+    "@eslint/js": "^9.16.0",
     "@types/node": "^22.14.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.2",
+    "@typescript-eslint/parser": "^8.18.2",
     "@vitejs/plugin-react": "^5.0.0",
     "@vitest/coverage-v8": "^4.0.15",
     "@vitest/ui": "^4.0.15",
+    "eslint": "^9.16.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^16.5.0",
     "jsdom": "^25.0.1",
+    "lefthook": "^2.0.8",
+    "prettier": "^3.4.2",
     "typescript": "~5.8.2",
     "vite": "^6.2.0",
     "vitest": "^4.0.15"

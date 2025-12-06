@@ -30,7 +30,7 @@ export const Insights: React.FC = () => {
             <p className="text-slate-400 mt-2 text-sm">Fetched dynamically from a placeholder API to demonstrate async data handling.</p>
           </div>
           <button className="hidden md:flex items-center text-sm font-medium text-slate-300 hover:text-white transition-colors mt-4 md:mt-0">
-             View All Posts <BookOpen size={16} className="ml-2" />
+            View All Posts <BookOpen size={16} className="ml-2" />
           </button>
         </div>
 

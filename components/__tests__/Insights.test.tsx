@@ -17,17 +17,17 @@ const mockBlogPosts: BlogPost[] = [
   {
     id: 1,
     title: 'Understanding React Hooks',
-    body: 'React Hooks provide a way to use state and lifecycle features in functional components.'
+    body: 'React Hooks provide a way to use state and lifecycle features in functional components.',
   },
   {
     id: 2,
     title: 'TypeScript Best Practices',
-    body: 'Learn the best practices for writing maintainable TypeScript code.'
-  }
+    body: 'Learn the best practices for writing maintainable TypeScript code.',
+  },
 ];
 
 vi.mock('../../services/api', () => ({
-  fetchTechArticles: vi.fn()
+  fetchTechArticles: vi.fn(),
 }));
 
 import { fetchTechArticles } from '../../services/api';
@@ -117,21 +117,21 @@ describe('Insights Component', () => {
 
   it('has proper section id for navigation', () => {
     const { container } = render(<Insights />);
-    
+
     const section = container.querySelector('#insights');
     expect(section).toBeInTheDocument();
   });
 
   it('applies correct background styling', () => {
     const { container } = render(<Insights />);
-    
+
     const section = container.querySelector('#insights');
     expect(section).toHaveClass('py-24', 'bg-slate-900', 'text-white');
   });
 
   it('handles empty blog posts array', async () => {
     vi.mocked(fetchTechArticles).mockResolvedValue([]);
-    
+
     render(<Insights />);
 
     await waitFor(

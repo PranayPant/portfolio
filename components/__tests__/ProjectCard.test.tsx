@@ -18,7 +18,7 @@ const mockProject: Project = {
   title: 'Legacy Migration Project',
   description: 'Migrated a legacy system to modern architecture',
   impact: 'Reduced load time by 60% and improved user satisfaction',
-  tech: ['React', 'TypeScript', 'Node.js', 'Docker']
+  tech: ['React', 'TypeScript', 'Node.js', 'Docker'],
 };
 
 describe('ProjectCard Component', () => {
@@ -41,7 +41,7 @@ describe('ProjectCard Component', () => {
 
   it('displays correct icon for legacy-migration project', () => {
     render(<ProjectCard project={mockProject} index={0} />);
-    
+
     const zapIcon = screen.getByTestId('zap-icon');
     expect(zapIcon).toBeInTheDocument();
     expect(zapIcon).toHaveClass('text-amber-500');
@@ -51,11 +51,11 @@ describe('ProjectCard Component', () => {
     const designSystemProject: Project = {
       ...mockProject,
       id: 'design-system',
-      title: 'Design System'
+      title: 'Design System',
     };
-    
+
     render(<ProjectCard project={designSystemProject} index={0} />);
-    
+
     const layersIcon = screen.getByTestId('layers-icon');
     expect(layersIcon).toBeInTheDocument();
     expect(layersIcon).toHaveClass('text-purple-500');
@@ -65,11 +65,11 @@ describe('ProjectCard Component', () => {
     const automationProject: Project = {
       ...mockProject,
       id: 'automation-suite',
-      title: 'Automation Suite'
+      title: 'Automation Suite',
     };
-    
+
     render(<ProjectCard project={automationProject} index={0} />);
-    
+
     const barChartIcon = screen.getByTestId('bar-chart-icon');
     expect(barChartIcon).toBeInTheDocument();
     expect(barChartIcon).toHaveClass('text-emerald-500');
@@ -79,23 +79,23 @@ describe('ProjectCard Component', () => {
     const unknownProject: Project = {
       ...mockProject,
       id: 'unknown-project',
-      title: 'Unknown Project'
+      title: 'Unknown Project',
     };
-    
+
     render(<ProjectCard project={unknownProject} index={0} />);
-    
+
     expect(screen.getByTestId('layers-icon')).toBeInTheDocument();
   });
 
   it('renders arrow up right icon', () => {
     render(<ProjectCard project={mockProject} index={0} />);
-    
+
     expect(screen.getByTestId('arrow-up-right')).toBeInTheDocument();
   });
 
   it('displays impact section with proper styling', () => {
     render(<ProjectCard project={mockProject} index={0} />);
-    
+
     expect(screen.getByText('Impact:')).toBeInTheDocument();
     expect(screen.getByText('Reduced load time by 60% and improved user satisfaction')).toBeInTheDocument();
   });
