@@ -1,7 +1,7 @@
 # Pranay Pant - Senior Frontend Engineer Portfolio
 
-![Build Status](https://github.com/yourusername/portfolio/actions/workflows/deploy.yml/badge.svg)
-![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/yourusername/your-gist-id/raw/portfolio-coverage.json)
+![Build Status](https://github.com/PranayPant/portfolio/actions/workflows/deploy.yml/badge.svg)
+![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/PranayPant/2bfd0fc8c367aedda50e34154e93bac1/raw/portfolio-coverage.json)
 ![Tech](https://img.shields.io/badge/tech-React%20%7C%20TypeScript%20%7C%20Tailwind-blue)
 
 A high-performance portfolio application designed to showcase advanced frontend architecture, testing strategies, and responsive UI patterns.
