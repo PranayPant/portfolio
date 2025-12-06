@@ -19,9 +19,14 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Test job
-  test:
+  # Test, Build and Deploy job
+  test-build-deploy:
     runs-on: ubuntu-latest
+    
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     
     steps:
       - name: Checkout
@@ -67,33 +72,6 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
         continue-on-error: true
-
-  # Build and Deploy job
-  build-and-deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 8
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
 
       - name: Build project
         run: pnpm build
