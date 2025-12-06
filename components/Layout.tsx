@@ -1,5 +1,5 @@
 import React, { ReactNode, useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, Smartphone } from 'lucide-react';
+import { Menu, X, GithubIcon, LinkedinIcon, Mail, Smartphone } from 'lucide-react';
 import { PERSONAL_INFO } from '../constants';
 import { QualityIndicators } from './QualityIndicators';
 
@@ -47,6 +47,26 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               </a>
             ))}
             <a
+              href="https://github.com/PranayPant/portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-slate-600 hover:text-accent transition-colors flex items-center gap-1"
+              title="View Source Code"
+            >
+              <GithubIcon size={16} />
+              GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/pranay-pant-521174306/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-slate-600 hover:text-accent transition-colors flex items-center gap-1"
+              title="Connect on LinkedIn"
+            >
+              <LinkedinIcon size={16} />
+              LinkedIn
+            </a>
+            <a
               href={`mailto:${PERSONAL_INFO.email}`}
               className="px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors"
             >
@@ -68,6 +88,28 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 {link.name}
               </a>
             ))}
+            <a
+              href="https://github.com/PranayPant/portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-600 hover:text-accent font-medium py-2 flex items-center gap-2"
+              onClick={() => setIsMenuOpen(false)}
+              title="View Source Code"
+            >
+              <GithubIcon size={16} />
+              GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/pranay-pant-521174306/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-600 hover:text-accent font-medium py-2 flex items-center gap-2"
+              onClick={() => setIsMenuOpen(false)}
+              title="Connect on LinkedIn"
+            >
+              <LinkedinIcon size={16} />
+              LinkedIn
+            </a>
           </div>
         )}
       </nav>
@@ -80,12 +122,23 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <h3 className="text-xl font-bold text-white mb-4">{PERSONAL_INFO.name}</h3>
             <p className="text-slate-400 mb-6 max-w-xs">{PERSONAL_INFO.role}</p>
             <div className="flex space-x-4">
-              {/* Placeholders for social links as they weren't in resume */}
-              <a href="#" className="hover:text-white transition-colors">
-                <Github size={20} />
+              <a
+                href="https://github.com/PranayPant/portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+                title="View Source Code"
+              >
+                <GithubIcon size={20} />
               </a>
-              <a href="#" className="hover:text-white transition-colors">
-                <Linkedin size={20} />
+              <a
+                href="https://www.linkedin.com/in/pranay-pant-521174306/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+                title="Connect on LinkedIn"
+              >
+                <LinkedinIcon size={20} />
               </a>
             </div>
           </div>

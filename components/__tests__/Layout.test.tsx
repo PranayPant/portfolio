@@ -8,8 +8,8 @@ import { Layout } from '../Layout';
 vi.mock('lucide-react', () => ({
   Menu: () => <span data-testid="menu-icon" />,
   X: () => <span data-testid="close-icon" />,
-  Github: () => <span data-testid="github-icon" />,
-  Linkedin: () => <span data-testid="linkedin-icon" />,
+  GithubIcon: () => <span data-testid="github-icon" />,
+  LinkedinIcon: () => <span data-testid="linkedin-icon" />,
   Mail: () => <span data-testid="mail-icon" />,
   Smartphone: () => <span data-testid="smartphone-icon" />,
   // Icons needed by QualityIndicators component
@@ -143,8 +143,31 @@ describe('Layout Component', () => {
       </Layout>
     );
 
-    expect(screen.getByTestId('github-icon')).toBeInTheDocument();
-    expect(screen.getByTestId('linkedin-icon')).toBeInTheDocument();
+    // Check that GitHub and LinkedIn icons exist (multiple instances in nav and footer)
+    const githubIcons = screen.getAllByTestId('github-icon');
+    const linkedinIcons = screen.getAllByTestId('linkedin-icon');
+    
+    expect(githubIcons.length).toBeGreaterThanOrEqual(1);
+    expect(linkedinIcons.length).toBeGreaterThanOrEqual(1);
     expect(screen.getByTestId('mail-icon')).toBeInTheDocument();
+  });
+
+  it('renders social links in mobile navigation', async () => {
+    render(
+      <Layout>
+        <div>Test content</div>
+      </Layout>
+    );
+
+    // Open mobile menu
+    const menuButton = screen.getByRole('button');
+    fireEvent.click(menuButton);
+
+    // Check that GitHub and LinkedIn links are in mobile menu
+    const githubLinks = screen.getAllByText('GitHub');
+    const linkedinLinks = screen.getAllByText('LinkedIn');
+    
+    expect(githubLinks.length).toBeGreaterThanOrEqual(1);
+    expect(linkedinLinks.length).toBeGreaterThanOrEqual(1);
   });
 });
