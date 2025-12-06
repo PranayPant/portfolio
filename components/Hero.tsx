@@ -3,6 +3,12 @@ import { ArrowRight, Download } from 'lucide-react';
 import { PERSONAL_INFO } from '../constants';
 
 export const Hero: React.FC = () => {
+  const handleResumeDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/Resume_frontend.pdf';
+    link.download = 'Resume_frontend.pdf';
+    link.click();
+  };
   return (
     <section id="about" className="relative pt-20 pb-32 overflow-hidden">
       {/* Background Decor */}
@@ -32,7 +38,7 @@ export const Hero: React.FC = () => {
               </a>
               <button 
                 className="flex items-center px-6 py-3 border border-slate-300 text-slate-700 rounded-lg font-medium hover:border-slate-400 hover:bg-slate-50 transition-all"
-                onClick={() => alert("Resume download simulation")}
+                onClick={handleResumeDownload}
               >
                 <Download size={18} className="mr-2" />
                 Download Resume

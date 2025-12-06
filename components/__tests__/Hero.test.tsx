@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { Hero } from '../Hero';
 import { PERSONAL_INFO } from '../../constants';
 
@@ -12,6 +12,11 @@ vi.mock('lucide-react', () => ({
 }));
 
 describe('Hero Component', () => {
+  afterEach(() => {
+    cleanup();
+    vi.clearAllMocks();
+  });
+
   it('renders the main heading correctly', () => {
     render(<Hero />);
     
@@ -39,16 +44,44 @@ describe('Hero Component', () => {
   });
 
   it('handles resume download click', () => {
-    // Mock window.alert
-    const alertMock = vi.spyOn(window, 'alert').mockImplementation(() => {});
-    
     render(<Hero />);
+    
+    // Set up mocks after component is rendered
+    const mockClick = vi.fn();
+    const mockAnchor = {
+      href: '',
+      download: '',
+      style: { display: '' },
+      click: mockClick
+    };
+    
+    // Mock document.createElement
+    const originalCreateElement = document.createElement;
+    const createElementSpy = vi.spyOn(document, 'createElement')
+      .mockImplementation((tagName) => {
+        if (tagName === 'a') {
+          return mockAnchor as any;
+        }
+        return originalCreateElement.call(document, tagName);
+      });
+    
+    // Mock appendChild and removeChild to be no-ops
+    const appendChildSpy = vi.spyOn(document.body, 'appendChild')
+      .mockImplementation(() => mockAnchor as any);
+    
+    const removeChildSpy = vi.spyOn(document.body, 'removeChild')
+      .mockImplementation(() => mockAnchor as any);
     
     const downloadButton = screen.getByText(/Download Resume/i);
     fireEvent.click(downloadButton);
     
-    expect(alertMock).toHaveBeenCalledWith('Resume download simulation');
+    expect(createElementSpy).toHaveBeenCalledWith('a');
+    expect(mockAnchor.href).toContain('Resume_frontend.pdf');
+    expect(mockAnchor.download).toBe('Resume_frontend.pdf');
+    expect(mockClick).toHaveBeenCalled();
     
-    alertMock.mockRestore();
+    createElementSpy.mockRestore();
+    appendChildSpy.mockRestore();
+    removeChildSpy.mockRestore();
   });
 });
