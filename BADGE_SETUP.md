@@ -11,13 +11,28 @@
 5. Click "Create public gist"
 6. Copy the Gist ID from the URL (e.g., if URL is `https://gist.github.com/username/abc123def456`, the ID is `abc123def456`)
 
-## Step 2: Add GitHub Repository Secret
+## Step 2: Add GitHub Repository Secrets
 1. Go to your repository on GitHub
 2. Navigate to Settings → Secrets and variables → Actions
-3. Click "New repository secret"
-4. Name: `GIST_ID`
-5. Value: Your gist ID from step 1
-6. Click "Add secret"
+3. Click "New repository secret" and add these secrets:
+
+**Required:**
+- Name: `GIST_ID`
+- Value: Your gist ID from step 1
+
+**For Coverage Badge (Optional):**
+- Name: `GIST_TOKEN`
+- Value: Personal Access Token with gist permissions
+
+### Creating a Personal Access Token for Gists:
+1. Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+2. Click "Generate new token (classic)"
+3. Give it a name like "Portfolio Coverage Badge"
+4. Select scopes: `gist` (Create gists)
+5. Click "Generate token"
+6. Copy the token and add it as `GIST_TOKEN` secret
+
+**Note:** If you skip the GIST_TOKEN, the workflow will still work but won't update the coverage badge.
 
 ## Step 3: Update README.md
 Replace the placeholders in your README.md:
