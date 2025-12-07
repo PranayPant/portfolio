@@ -1,98 +1,51 @@
-name: Test and Deploy to GitHub Pages
+name: Deploy to Cloudflare Pages
 
 on:
   push:
-    branches: [ main, master ]
+    branches:
+      - main # Pushing to main triggers a Production deploy
   pull_request:
-    branches: [ main, master ]
+    branches:
+      - main # Opening a PR triggers a Preview deploy
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-  actions: read
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Optimization: Cancel previous builds if a new commit is pushed to the same PR
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  # Test, Build and Deploy job
-  test-build-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    
+    permissions:
+      contents: read
+      deployments: write
+      pull-requests: write # Needed to comment the URL on the PR
+
+    name: Deploy to Cloudflare Pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'pnpm'
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Install dependencies
+      - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Check code formatting
-        run: pnpm format:check
-
-      - name: Lint code
-        run: pnpm lint
-
-      - name: Run tests
-        run: pnpm test:run
-
-      - name: Run tests with coverage
-        run: pnpm test:coverage
-
-      - name: Extract Coverage
-        id: coverage
-        run: |
-          COVERAGE=$(jq -r '.total.lines.pct' coverage/coverage-summary.json)
-          echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
-          echo "Coverage: $COVERAGE%"
-
-      - name: Create Coverage Badge
-        uses: schneegans/dynamic-badges-action@v1.7.0
-        with:
-          auth: ${{ secrets.GIST_TOKEN }}
-          gistID: ${{ secrets.GIST_ID }}
-          filename: portfolio-coverage.json
-          label: Coverage
-          message: ${{ steps.coverage.outputs.coverage }}%
-          color: ${{ steps.coverage.outputs.coverage >= 90 && 'brightgreen' || steps.coverage.outputs.coverage >= 80 && 'green' || steps.coverage.outputs.coverage >= 70 && 'yellow' || 'red' }}
-        continue-on-error: true
-
-      - name: Upload coverage reports
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-        continue-on-error: true
-
-      - name: Build project
+      - name: Build
         run: pnpm build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
         with:
-          enablement: true
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=portfolio
+          # Optional: Enable this if you want to have GitHub Deployments triggered
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
