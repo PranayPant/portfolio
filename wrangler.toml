@@ -1,0 +1,8 @@
+name = "portfolio"
+compatibility_date = "2024-12-07"
+pages_build_output_dir = "dist"
+
+# AI binding for functions
+[ai]
+binding = "AI"
+remote = true

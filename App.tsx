@@ -6,6 +6,7 @@ import { SkillsChart } from './components/SkillsChart';
 import { ProjectCard } from './components/ProjectCard';
 import { Insights } from './components/Insights';
 import { PROJECTS } from './constants';
+import { Chat } from './components/ChatBot';
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
           </a>
         </div>
       </section>
+      <Chat />
     </Layout>
   );
 }

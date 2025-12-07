@@ -5,15 +5,21 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     
-    // For GitHub Pages, use the repository name as base path
-    // Change '/portfolio/' to match your actual repository name
-    const base = process.env.NODE_ENV === 'production' ? '/portfolio/' : '/';
+    const base = '/';
     
     return {
       base,
       server: {
         port: 3000,
         host: '0.0.0.0',
+        // Add this proxy configuration
+        proxy: {
+          '/api': {
+            target: 'http://127.0.0.1:8788', // Point to Wrangler
+            changeOrigin: true,
+            secure: false,
+          },
+        },
       },
       plugins: [react()],
       define: {

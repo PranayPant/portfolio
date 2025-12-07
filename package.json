@@ -4,15 +4,16 @@
   "type": "module",
   "packageManager": "pnpm@10.22.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"vite\" \"wrangler pages dev --proxy 3000\"",
     "build": "vite build",
-    "preview": "vite preview",
+    "preview": "npm run build && wrangler pages dev dist",
+    "deploy:local": "pnpm build && wrangler pages deploy",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:coverage-ui": "vitest --ui --coverage",
-    "deploy": "pnpm build && gh-pages -d dist",
+    "deploy:gh": "pnpm build && gh-pages -d dist",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext ts,tsx --fix",
     "format": "prettier --write .",
@@ -22,20 +23,27 @@
     "@jest/globals": "^30.2.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
+    "ai": "^5.0.108",
     "lucide-react": "^0.556.0",
     "react": "^19.2.1",
+    "react-chatbotify": "^2.5.0",
     "react-dom": "^19.2.1",
     "recharts": "^3.5.1",
-    "whatwg-fetch": "^3.6.20"
+    "whatwg-fetch": "^3.6.20",
+    "workers-ai-provider": "^2.0.0"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20251205.0",
     "@eslint/js": "^9.16.0",
     "@types/node": "^22.14.0",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.18.2",
     "@typescript-eslint/parser": "^8.18.2",
     "@vitejs/plugin-react": "^5.0.0",
     "@vitest/coverage-v8": "^4.0.15",
     "@vitest/ui": "^4.0.15",
+    "concurrently": "^9.2.1",
     "eslint": "^9.16.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
@@ -46,6 +54,7 @@
     "prettier": "^3.4.2",
     "typescript": "~5.8.2",
     "vite": "^6.2.0",
-    "vitest": "^4.0.15"
+    "vitest": "^4.0.15",
+    "wrangler": "^4.53.0"
   }
 }
