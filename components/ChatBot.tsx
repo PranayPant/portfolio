@@ -4,7 +4,7 @@ export const Chat = () => {
   let hasError = false;
   const flow: Flow = {
     start: {
-      message: 'Hello there! Enter a prompt.',
+      message: 'Hello there! Ask me a question about my resume.',
       path: 'loop',
     },
     loop: {
@@ -65,5 +65,14 @@ export const Chat = () => {
       },
     },
   };
-  return <ChatBot flow={flow} />;
+  return (
+    <ChatBot
+      settings={{
+        header: {
+          title: 'Pranay Bot',
+        },
+      }}
+      flow={flow}
+    />
+  );
 };
