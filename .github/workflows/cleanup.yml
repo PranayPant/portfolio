@@ -1,18 +1,20 @@
-name: Cleanup Preview Environment
-
+name: Pull Request Closed
+concurrency:
+  group: pr_${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 on:
   pull_request:
-    types: [closed]
+    types:
+      - closed
+      - merged
 
 jobs:
-  cleanup:
+  - name: Delete Cloudflare Preview Deployment
     runs-on: ubuntu-latest
-    name: Cleanup Cloudflare Pages
     steps:
-      - name: Delete Preview Deployments
-        uses: indiesdev/cloudflare-pages-delete-deployments@v1
+      - uses: go-fjords/cloudflare-delete-deployments-action@main
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: 'portfolio' # Your actual Cloudflare project name
-          branch: ${{ github.head_ref }} # The branch that was just merged/closed
+          token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          project: portfolio
+          account: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          branch: ${{ github.head_ref }}

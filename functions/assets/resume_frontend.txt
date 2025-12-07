@@ -1,0 +1,58 @@
+PRANAY PANT
+
+Senior Frontend Engineer • Next.js Expert • Performance & UI Architecture
+
+Dallas, TX • +1-479-402-1614 • punch.up0079@gmail.com
+
+SUMMARY
+
+Frontend specialist with 8+ years building high-performance, scalable UI systems using React, Next.js,
+and TypeScript.
+
+Expert in large-scale migrations, performance tuning, accessibility, and CI/CD automation.
+
+CORE FRONTEND SKILLS
+
+React, Next.js (12–14), TypeScript, Tailwind, React Query, Storybook, SWR
+
+Testing: Playwright, Cypress, Jest, a11y
+
+Performance: Bundle optimization, Lighthouse, SEO improvements
+
+DevOps: GitHub Actions, Azure DevOps, Docker
+
+EXPERIENCE
+
+Frontend/UI Engineer — CVS Health (2023–Present)
+
+- Rebuilt entire legacy RN-web UI into Next.js 13 App Router.
+
+- Reduced bundle size and improved SEO via performance tools.
+
+- Implemented React Query, SSR, accessibility test stack.
+
+- Automated CI/CD testing using Playwright + Storybook.
+
+Senior Frontend Engineer — Red Ventures (2021–2023)
+
+- Migrated multiple apps to Next.js + TypeScript.
+
+- Standardized architecture using Tailwind + Context API.
+
+- Implemented ISR and GraphQL-driven static generation.
+
+Software Engineer — Magellan Health (2020–2021)
+
+- UI-focused development in Agile sprints.
+
+
+
+- Built E2E automation for authorization portal.
+
+Software Engineer — Walmart Labs (2017–2020)
+
+- Built CMS tools and dashboards for internal health systems.
+
+EDUCATION
+
+B.S. Computer Science — UCSD
