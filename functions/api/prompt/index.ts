@@ -11,11 +11,17 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
   
   try {
     const workersai = createWorkersAI({ binding: env.AI });
-    const body = await request.json() as { prompt: string };
+    const body = await request.json();
+    const prompt = body.prompt;
+
+    if(!prompt) {
+      throw new Error("Empty prompt");
+    }
     
     const result = streamText({
       model: workersai('@cf/meta/llama-2-7b-chat-int8'),
-      prompt: body.prompt || 'Write a 50-word essay about hello world.',
+      prompt,
+      maxOutputTokens: 100,
     });
 
     return result.toTextStreamResponse({
