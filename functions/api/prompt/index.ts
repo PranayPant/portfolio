@@ -20,6 +20,10 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
     
     const result = streamText({
       model: workersai('@cf/meta/llama-2-7b-chat-int8'),
+      system: `
+            You are an observant assistant that is mindful about the token limits, 
+            and ensures responses are short enough so they don’t get cut off abruptly.
+      `,
       prompt,
       maxOutputTokens: 100,
     });

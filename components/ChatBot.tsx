@@ -1,6 +1,7 @@
 import ChatBot, { type Flow } from 'react-chatbotify';
 
 export const Chat = () => {
+  let hasError = false;
   const flow: Flow = {
     start: {
       message: 'Hello there! Enter a prompt.',
@@ -49,14 +50,19 @@ export const Chat = () => {
 
           // 6. Signal the end of the stream once all chunks are processed
           await params.endStreamMessage('');
-          return; // No return value needed, message is already streamed
-        } catch (error) {
-          console.error('Streaming fetch failed:', error);
+          hasError = false;
+        } catch {
+          hasError = true;
           await params.streamMessage("Sorry, I couldn't connect to the streaming service.");
           await params.endStreamMessage('');
         }
       },
-      path: 'start',
+      path: () => {
+        if (hasError) {
+          return 'start';
+        }
+        return 'loop';
+      },
     },
   };
   return <ChatBot flow={flow} />;
