@@ -40,49 +40,57 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map(link => (
-              <a key={link.name} href={link.href} className="text-sm font-medium text-slate-600 hover:text-accent transition-colors">
-                {link.name}
+          <div className="hidden lg:flex items-center space-x-4 xl:space-x-6 2xl:space-x-8">
+            <div className="flex items-center space-x-4 xl:space-x-6">
+              {navLinks.map(link => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-sm font-medium text-slate-600 hover:text-accent transition-colors whitespace-nowrap"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+            <div className="flex items-center space-x-3 xl:space-x-4 border-l border-slate-200 pl-4 xl:pl-6">
+              <a
+                href="https://github.com/PranayPant/portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-slate-600 hover:text-accent transition-colors flex items-center gap-1"
+                title="View Source Code"
+              >
+                <GithubIcon size={16} />
+                <span className="hidden xl:inline">GitHub</span>
               </a>
-            ))}
-            <a
-              href="https://github.com/PranayPant/portfolio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-slate-600 hover:text-accent transition-colors flex items-center gap-1"
-              title="View Source Code"
-            >
-              <GithubIcon size={16} />
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/pranay-pant-521174306/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-slate-600 hover:text-accent transition-colors flex items-center gap-1"
-              title="Connect on LinkedIn"
-            >
-              <LinkedinIcon size={16} />
-              LinkedIn
-            </a>
-            <a
-              href={`mailto:${PERSONAL_INFO.email}`}
-              className="px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors"
-            >
-              Contact Me
-            </a>
+              <a
+                href="https://www.linkedin.com/in/pranay-pant-521174306/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-slate-600 hover:text-accent transition-colors flex items-center gap-1"
+                title="Connect on LinkedIn"
+              >
+                <LinkedinIcon size={16} />
+                <span className="hidden xl:inline">LinkedIn</span>
+              </a>
+              <a
+                href={`mailto:${PERSONAL_INFO.email}`}
+                className="px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors whitespace-nowrap"
+              >
+                Contact Me
+              </a>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-slate-700" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button className="lg:hidden text-slate-700" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Nav Dropdown */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-lg py-4 px-4 flex flex-col space-y-4">
+          <div className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-lg py-4 px-4 flex flex-col space-y-4">
             {navLinks.map(link => (
               <a key={link.name} href={link.href} className="text-slate-600 hover:text-accent font-medium py-2" onClick={() => setIsMenuOpen(false)}>
                 {link.name}
