@@ -41,6 +41,12 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Lint Codebase
+        run: pnpm lint
+
+      - name: Run Tests
+        run: pnpm test:coverage
+
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:

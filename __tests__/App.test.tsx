@@ -4,6 +4,11 @@ import '@testing-library/jest-dom';
 import { describe, it, expect, vi } from 'vitest';
 import App from '../App';
 
+// Mock react-chatbotify to avoid CSS import issues
+vi.mock('react-chatbotify', () => ({
+  default: () => <div data-testid="chatbot">ChatBot</div>,
+}));
+
 // Mock all child components
 vi.mock('../components/Layout', () => ({
   Layout: ({ children }: { children: React.ReactNode }) => <div data-testid="layout">{children}</div>,

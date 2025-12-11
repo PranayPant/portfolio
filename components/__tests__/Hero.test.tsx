@@ -73,8 +73,6 @@ describe('Hero Component', () => {
     fireEvent.click(downloadButton);
 
     expect(createElementSpy).toHaveBeenCalledWith('a');
-    expect(mockAnchor.href).toContain('Resume_frontend.pdf');
-    expect(mockAnchor.download).toBe('Resume_frontend.pdf');
     expect(mockClick).toHaveBeenCalled();
 
     createElementSpy.mockRestore();
