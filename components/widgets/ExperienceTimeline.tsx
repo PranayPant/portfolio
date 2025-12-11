@@ -1,5 +1,5 @@
 import React from 'react';
-import { EXPERIENCES } from '../constants';
+import { EXPERIENCES } from '@/constants';
 import { Briefcase, Calendar } from 'lucide-react';
 
 export const ExperienceTimeline: React.FC = () => {

@@ -3,7 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { Insights } from '../Insights';
-import { BlogPost } from '../../types';
+import { BlogPost } from '@types';
 
 // Mock icons
 vi.mock('lucide-react', () => ({
@@ -26,11 +26,11 @@ const mockBlogPosts: BlogPost[] = [
   },
 ];
 
-vi.mock('../../services/api', () => ({
+vi.mock('@/services/api', () => ({
   fetchTechArticles: vi.fn(),
 }));
 
-import { fetchTechArticles } from '../../services/api';
+import { fetchTechArticles } from '@/services/api';
 
 describe('Insights Component', () => {
   beforeEach(() => {

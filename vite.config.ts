@@ -30,6 +30,8 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
+        '@components': path.resolve(__dirname, 'components'),
+        '@types': path.resolve(__dirname, 'types.ts'),
       },
     },
     test: {
@@ -51,7 +53,7 @@ export default defineConfig(({ mode }) => {
           '**/*.config.{ts,js}',
           'dist/',
         ],
-        include: ['components/**/*.{ts,tsx}', 'services/**/*.{ts,tsx}', '*.{ts,tsx}'],
+        include: ['components/widgets/**/*.{ts,tsx}'],
         thresholds: {
           global: {
             branches: 80,

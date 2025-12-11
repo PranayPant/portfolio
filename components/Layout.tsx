@@ -1,9 +1,9 @@
 import React, { ReactNode, useState, useEffect, Suspense } from 'react';
 import { Menu, X, GithubIcon, LinkedinIcon, Mail, Smartphone } from 'lucide-react';
-import { PERSONAL_INFO } from '../constants';
+import { PERSONAL_INFO } from '@/constants';
 
 // Lazy load QualityIndicators since it's below the fold
-const QualityIndicators = React.lazy(() => import('./QualityIndicators'));
+const QualityIndicators = React.lazy(() => import('@components/widgets/QualityIndicators'));
 
 interface LayoutProps {
   children: ReactNode;

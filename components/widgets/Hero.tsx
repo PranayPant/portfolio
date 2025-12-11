@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Download } from 'lucide-react';
-import { PERSONAL_INFO } from '../constants';
+import { PERSONAL_INFO } from '@/constants';
 
 export const Hero: React.FC = () => {
   const handleResumeDownload = () => {

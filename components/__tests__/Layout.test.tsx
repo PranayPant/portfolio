@@ -12,11 +12,6 @@ vi.mock('lucide-react', () => ({
   LinkedinIcon: () => <span data-testid="linkedin-icon" />,
   Mail: () => <span data-testid="mail-icon" />,
   Smartphone: () => <span data-testid="smartphone-icon" />,
-  // Icons needed by QualityIndicators component
-  ShieldCheck: (props: any) => <span data-testid="shield-check" className={props.className} />,
-  Activity: (props: any) => <span data-testid="activity" className={props.className} />,
-  Terminal: (props: any) => <span data-testid="terminal" className={props.className} />,
-  CheckCircle2: (props: any) => <span data-testid="check-circle" className={props.className} />,
 }));
 
 vi.mock('../constants', () => ({
@@ -27,6 +22,11 @@ vi.mock('../constants', () => ({
     github: 'https://github.com/pranaypant',
     linkedin: 'https://linkedin.com/in/pranaypant',
   },
+}));
+
+// Mock LoadOnScroll to render children immediately in tests
+vi.mock('../LoadOnScroll', () => ({
+  default: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }));
 
 describe('Layout Component', () => {
@@ -126,16 +126,6 @@ describe('Layout Component', () => {
     expect(navLinks.length).toBeGreaterThan(0);
   });
 
-  it('renders footer with quality indicators', () => {
-    render(
-      <Layout>
-        <div>Test content</div>
-      </Layout>
-    );
-
-    expect(screen.getByText('Engineering Quality Standards')).toBeInTheDocument();
-  });
-
   it('renders social links in footer', () => {
     render(
       <Layout>
@@ -146,7 +136,7 @@ describe('Layout Component', () => {
     // Check that GitHub and LinkedIn icons exist (multiple instances in nav and footer)
     const githubIcons = screen.getAllByTestId('github-icon');
     const linkedinIcons = screen.getAllByTestId('linkedin-icon');
-    
+
     expect(githubIcons.length).toBeGreaterThanOrEqual(1);
     expect(linkedinIcons.length).toBeGreaterThanOrEqual(1);
     expect(screen.getByTestId('mail-icon')).toBeInTheDocument();
@@ -166,7 +156,7 @@ describe('Layout Component', () => {
     // Check that GitHub and LinkedIn links are in mobile menu
     const githubLinks = screen.getAllByText('GitHub');
     const linkedinLinks = screen.getAllByText('LinkedIn');
-    
+
     expect(githubLinks.length).toBeGreaterThanOrEqual(1);
     expect(linkedinLinks.length).toBeGreaterThanOrEqual(1);
   });

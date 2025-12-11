@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { describe, it, expect, vi } from 'vitest';
 import { ProjectCard } from '../ProjectCard';
-import { Project } from '../../types';
+import { Project } from '@types';
 
 // Mock icons
 vi.mock('lucide-react', () => ({

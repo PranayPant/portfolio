@@ -1,16 +1,16 @@
 import React from 'react';
-import { Layout } from './components/Layout';
-import { Hero } from './components/Hero';
-import { PROJECTS } from './constants';
-import LazyLoad from './components/LazyLoad';
-import LoadingSpinner from './components/LoadingSpinner';
+import { Layout } from '@components/Layout';
+import { Hero } from '@components/widgets/Hero';
+import { PROJECTS } from '@/constants';
+import LazyLoad from '@components/LazyLoad';
+import LoadingSpinner from '@components/LoadingSpinner';
 
 // Lazy load components that appear below the fold
-const ExperienceTimeline = React.lazy(() => import('./components/ExperienceTimeline'));
-const SkillsChart = React.lazy(() => import('./components/SkillsChart'));
-const ProjectCard = React.lazy(() => import('./components/ProjectCard'));
-const Insights = React.lazy(() => import('./components/Insights'));
-const Chat = React.lazy(() => import('./components/ChatBot'));
+const ExperienceTimeline = React.lazy(() => import('@components/widgets/ExperienceTimeline'));
+const SkillsChart = React.lazy(() => import('@components/widgets/SkillsChart'));
+const ProjectCard = React.lazy(() => import('@components/widgets/ProjectCard'));
+const Insights = React.lazy(() => import('@components/widgets/Insights'));
+const Chat = React.lazy(() => import('@components/ChatBot'));
 
 function App() {
   return (
