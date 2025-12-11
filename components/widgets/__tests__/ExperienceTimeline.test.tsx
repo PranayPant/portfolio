@@ -41,23 +41,22 @@ describe('ExperienceTimeline Component', () => {
   it('renders all experience items', () => {
     render(<ExperienceTimeline />);
 
-    expect(screen.getByText('Tech Corp')).toBeInTheDocument();
-    expect(screen.getByText('Senior Frontend Engineer')).toBeInTheDocument();
-    expect(screen.getByText('2022 - Present')).toBeInTheDocument();
+    expect(screen.getByText('CVS Health')).toBeInTheDocument();
+    expect(screen.getByText('Frontend/UI Engineer')).toBeInTheDocument();
+    expect(screen.getByText('2023 – Present')).toBeInTheDocument();
 
-    expect(screen.getByText('StartupXYZ')).toBeInTheDocument();
-    expect(screen.getByText('Frontend Developer')).toBeInTheDocument();
-    expect(screen.getByText('2020 - 2022')).toBeInTheDocument();
+    expect(screen.getByText('Red Ventures')).toBeInTheDocument();
+    expect(screen.getByText('Senior Frontend Engineer')).toBeInTheDocument();
+    expect(screen.getByText('2021 – 2023')).toBeInTheDocument();
   });
 
   it('displays job descriptions correctly', () => {
     render(<ExperienceTimeline />);
 
-    expect(screen.getByText('Led development of React applications')).toBeInTheDocument();
-    expect(screen.getByText('Improved performance by 40%')).toBeInTheDocument();
-    expect(screen.getByText('Mentored junior developers')).toBeInTheDocument();
-    expect(screen.getByText('Built responsive web applications')).toBeInTheDocument();
-    expect(screen.getByText('Implemented modern UI/UX designs')).toBeInTheDocument();
+    expect(screen.getByText('Rebuilt entire legacy RN-web UI into Next.js 13 App Router.')).toBeInTheDocument();
+    expect(screen.getByText('Reduced bundle size and improved SEO via performance tools.')).toBeInTheDocument();
+    expect(screen.getByText('Migrated multiple apps to Next.js + TypeScript.')).toBeInTheDocument();
+    expect(screen.getByText('Standardized architecture using Tailwind + Context API.')).toBeInTheDocument();
   });
 
   it('renders briefcase and calendar icons', () => {
@@ -66,8 +65,8 @@ describe('ExperienceTimeline Component', () => {
     const briefcaseIcons = screen.getAllByTestId('briefcase');
     const calendarIcons = screen.getAllByTestId('calendar');
 
-    expect(briefcaseIcons).toHaveLength(2); // One for each experience
-    expect(calendarIcons).toHaveLength(2); // One for each experience
+    expect(briefcaseIcons).toHaveLength(4); // One for each experience
+    expect(calendarIcons).toHaveLength(4); // One for each experience
   });
 
   it('has proper section id for navigation', () => {

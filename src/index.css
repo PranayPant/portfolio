@@ -1,0 +1,36 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #0f172a; /* Slate 900 */
+  --color-secondary: #334155; /* Slate 700 */
+  --color-accent: #0ea5e9; /* Sky 500 */
+  --font-family-sans: Inter, sans-serif;
+
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+/* Text selection styling */
+::selection {
+  @apply bg-accent text-white;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}

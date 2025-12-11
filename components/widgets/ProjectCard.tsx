@@ -1,5 +1,5 @@
 import React from 'react';
-import { Project } from '../types';
+import { Project } from '@types';
 import { ArrowUpRight, Zap, Layers, BarChart } from 'lucide-react';
 
 interface ProjectCardProps {
@@ -50,3 +50,5 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index: _index
     </div>
   );
 };
+
+export default ProjectCard;

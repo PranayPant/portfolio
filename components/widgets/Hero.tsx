@@ -1,12 +1,12 @@
 import React from 'react';
 import { ArrowRight, Download } from 'lucide-react';
-import { PERSONAL_INFO } from '../constants';
+import { PERSONAL_INFO } from '@/constants';
 
 export const Hero: React.FC = () => {
   const handleResumeDownload = () => {
     const link = document.createElement('a');
-    link.href = '/Resume_frontend.pdf';
-    link.download = 'Resume_frontend.pdf';
+    link.href = '/resume.pdf';
+    link.download = 'PranaysResume.pdf';
     link.click();
   };
   return (
@@ -64,7 +64,12 @@ export const Hero: React.FC = () => {
               {/* Placeholder for professional headshot */}
               <img
                 src="https://picsum.photos/800/800?grayscale"
+                srcSet="https://picsum.photos/400/400?grayscale 400w,
+                        https://picsum.photos/600/600?grayscale 600w,
+                        https://picsum.photos/800/800?grayscale 800w"
+                sizes="(max-width: 768px) 400px, (max-width: 1024px) 600px, 800px"
                 alt="Pranay Pant"
+                loading="eager"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent flex items-end p-8">

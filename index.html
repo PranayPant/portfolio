@@ -1,60 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pranay Pant | Senior Frontend Engineer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#0f172a', // Slate 900
-              secondary: '#334155', // Slate 700
-              accent: '#0ea5e9', // Sky 500
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-            },
-            animation: {
-              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-            },
-            keyframes: {
-              fadeInUp: {
-                '0%': { opacity: '0', transform: 'translateY(20px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              }
-            }
-          },
-        },
-      }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 1. Standard SEO -->
+    <meta
+      name="description"
+      content="Portfolio of Pranay Pant, a senior frontend engineer specializing in React, Vite, and Cloudflare Pages. Explore my projects, resume, and technical writing."
+    />
+    <meta name="keywords" content="Pranay Pant, Web Developer, React, Portfolio, Cloudflare, Full Stack, Software Engineer" />
+    <meta name="author" content="Pranay Pant" />
+
+    <!-- 2. Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <!-- This controls the preview card title -->
+    <meta property="og:title" content="Pranay Pant | Senior Frontend Engineer" />
+    <!-- This controls the preview card description -->
+    <meta property="og:description" content="View my latest projects, technical skills, and experience building scalable web applications." />
+    <!-- The URL of your site -->
+    <meta property="og:url" content="https://portfolio-8su.pages.dev/" />
+    <meta property="og:type" content="website" />
+
+    <!-- 3. Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pranay Pant | Senior Frontend Engineer" />
+    <meta name="twitter:description" content="Check out my portfolio featuring projects in React, AI, and Cloudflare." />
+
+    <!-- 4. Theme Color (Matches your Favicon/Brand) -->
+    <meta name="theme-color" content="#2563eb" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <style>
-      body { font-family: 'Inter', sans-serif; }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
       /* Smooth scrolling for anchor links */
-      html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.1",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
-    "react/": "https://aistudiocdn.com/react@^19.2.1/",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
-    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
-    "@testing-library/jest-dom": "https://aistudiocdn.com/@testing-library/jest-dom@^6.9.1",
-    "@testing-library/react": "https://aistudiocdn.com/@testing-library/react@^16.3.0",
-    "whatwg-fetch": "https://aistudiocdn.com/whatwg-fetch@^3.6.20",
-    "@jest/globals": "https://aistudiocdn.com/@jest/globals@^30.2.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
-  <body class="bg-slate-50 text-slate-900 antialiased selection:bg-accent selection:text-white">
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body>
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>

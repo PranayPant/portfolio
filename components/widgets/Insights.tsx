@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTechArticles } from '../services/api';
-import { BlogPost } from '../types';
+import { fetchTechArticles } from '@/services/api';
+import { BlogPost } from '@/types';
 import { Loader2, BookOpen, ArrowUpRight } from 'lucide-react';
 
 export const Insights: React.FC = () => {
@@ -57,3 +57,5 @@ export const Insights: React.FC = () => {
     </section>
   );
 };
+
+export default Insights;

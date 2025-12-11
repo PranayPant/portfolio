@@ -1,6 +1,6 @@
 import React from 'react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Cell } from 'recharts';
-import { SKILLS } from '../constants';
+import { SKILLS } from '@/constants';
 
 export const SkillsChart: React.FC = () => {
   const data = SKILLS.map(skill => ({
@@ -80,3 +80,5 @@ export const SkillsChart: React.FC = () => {
     </section>
   );
 };
+
+export default SkillsChart;

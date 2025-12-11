@@ -85,6 +85,6 @@ export default [
 
   // Ignore patterns
   {
-    ignores: ['dist/', 'node_modules/', 'coverage/', '*.min.js', 'public/'],
+    ignores: ['dist/', 'node_modules/', 'coverage/', '*.min.js', 'public/', '.wrangler/'],
   },
 ];
