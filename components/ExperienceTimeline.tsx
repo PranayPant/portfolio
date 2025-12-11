@@ -56,3 +56,5 @@ export const ExperienceTimeline: React.FC = () => {
     </section>
   );
 };
+
+export default ExperienceTimeline;

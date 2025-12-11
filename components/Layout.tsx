@@ -1,7 +1,9 @@
-import React, { ReactNode, useState, useEffect } from 'react';
+import React, { ReactNode, useState, useEffect, Suspense } from 'react';
 import { Menu, X, GithubIcon, LinkedinIcon, Mail, Smartphone } from 'lucide-react';
 import { PERSONAL_INFO } from '../constants';
-import { QualityIndicators } from './QualityIndicators';
+
+// Lazy load QualityIndicators since it's below the fold
+const QualityIndicators = React.lazy(() => import('./QualityIndicators'));
 
 interface LayoutProps {
   children: ReactNode;
@@ -173,7 +175,17 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
 
         {/* Engineering Quality Indicators */}
-        <QualityIndicators />
+        <Suspense
+          fallback={
+            <div className="container mx-auto px-4 py-8">
+              <div className="flex items-center justify-center">
+                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-accent"></div>
+              </div>
+            </div>
+          }
+        >
+          <QualityIndicators />
+        </Suspense>
 
         <div className="container mx-auto px-4 mt-8 pt-8 border-t border-slate-800 text-center text-sm text-slate-500">
           © {new Date().getFullYear()} {PERSONAL_INFO.name}. All rights reserved. Built with React & Tailwind.

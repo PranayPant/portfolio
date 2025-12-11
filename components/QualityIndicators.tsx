@@ -44,3 +44,5 @@ export const QualityIndicators: React.FC = () => {
     </div>
   );
 };
+
+export default QualityIndicators;

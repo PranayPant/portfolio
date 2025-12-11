@@ -50,3 +50,5 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index: _index
     </div>
   );
 };
+
+export default ProjectCard;

@@ -57,3 +57,5 @@ export const Insights: React.FC = () => {
     </section>
   );
 };
+
+export default Insights;

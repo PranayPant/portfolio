@@ -80,3 +80,5 @@ export const SkillsChart: React.FC = () => {
     </section>
   );
 };
+
+export default SkillsChart;
